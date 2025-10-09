@@ -25,5 +25,5 @@ if($conn->affected_rows == 0) {
 
 // updated
 $stmt->close();
-die('{"data":"ok","message":"Concert updated successfully","status":200}');
+die('{"data":"ok","message":"bezoeker updated successfully","status":200}');
 ?>

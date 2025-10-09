@@ -14,8 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	exit;
 }
 
-// GET per ID
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	require 'inc/bezoekers/post.php';
 	exit;
