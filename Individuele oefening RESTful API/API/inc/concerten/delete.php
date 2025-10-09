@@ -1,5 +1,5 @@
 <?php
-// --- "delete" een concert  
+// --- "DELETE" een concert  
 
 // Zijn de nodige parameters meegegeven in de request?
 check_required_fields(["id"]);

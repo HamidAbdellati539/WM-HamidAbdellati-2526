@@ -1,5 +1,5 @@
 <?php
-// --- "Get" alle concerten  
+// --- "GET" alle concerten  
 
 $sql="select id, artiest, datum, uur, venue, kostprijs FROM concerten";
 

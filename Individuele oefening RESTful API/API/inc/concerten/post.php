@@ -1,5 +1,5 @@
 <?php
-// --- "add" een concert  
+// --- "POST" een concert  
 
 // Zijn de nodige parameters meegegeven in de request?
 check_required_fields(["artiest", "datum","uur", "venue", "kostprijs"]);
