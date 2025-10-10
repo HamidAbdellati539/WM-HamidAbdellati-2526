@@ -69,12 +69,122 @@
 				alertEl.innerHTML = "fout : " + error;
 			});
 	}
+		function postApiBezoekers() {
+			let form = document.getElementById("addVisitorForm");
+		
+			let concertData = {
+				voornaam: form.elements["bezoeker_voornaam"].value,
+				familienaam: form.elements["bezoeker_familienaam"].value,
+				geboortedatum: form.elements["Bezoeker_geboortedatum"].value,
+				email: form.elements["Bezoeker_Email"].value,
+			};
+		
+			let url = baseApiAddress + "bezoekers.php";
+		
+			let opties = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Accept": "application/json"
+				},
+				body: JSON.stringify(concertData)
+			};
+		
+			fetch(url, opties)
+				.then(response => response.json())
+				.then(responseData => {
+					if (responseData.ok === false || responseData.status === 400) {
+						alerter("Fout: " + responseData.message + "<br>Ontbrekende velden: ");
+					} else {
+						console.log("Concert toegevoegd:", responseData);
+						getApiBezoekers();
+					}
+				})
+				.catch(function (error) {
+					alertEl.innerHTML = "Fout bij toevoegen concert: " + error;
+				});
+		}
+			function deleteApiBezoekers(bezoekerId) {
+				bezoekerId = document.getElementById("bezoeker_id").value;
+				let url = baseApiAddress + "bezoekers.php";
 
+				let opties = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						"Accept": "application/json"
+					},
+					body: JSON.stringify({ id: bezoekerId })
+				};
+			
+				fetch(url, opties)
+					.then(response => response.json())
+					.then(responseData => {
+						if (responseData.ok === false) {
+							alerter("Fout bij verwijderen: " + responseData.message);
+						} else {
+							getApiBezoekers();
+						}
+					})
+					.catch(function (error) {
+						alertEl.innerHTML = "Fout bij verwijderen concert: " + error;
+					});
+				
+		}
+					function putApiBezoekers() {
+					let form = document.getElementById("putConcertForm");
+					let bezoeker_id = document.getElementById("bezoeker_id").value;
+					let bezoeker_voornaam = document.getElementById("bezoeker_voornaam").value;
+					let bezoeker_familienaam = document.getElementById("bezoeker_familienaam").value;
+					let Bezoeker_geboortedatum = document.getElementById("Bezoeker_geboortedatum").value;
+					let Bezoeker_Email = document.getElementById("bezoeker_email").value;
+
+						let concertData = {
+						id: bezoeker_id,
+						voornaam: bezoeker_voornaam,
+						familienaam: bezoeker_familienaam,
+						geboortedatum: Bezoeker_geboortedatum,
+						email: bezoeker_email,
+					};
+				
+					let url = baseApiAddress + "bezoekers.php";
+				
+					let opties = {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							"Accept": "application/json"
+						},
+						body: JSON.stringify(concertData)
+					};
+				
+					fetch(url, opties)
+						.then(response => response.json())
+						.then(responseData => {
+							if (responseData.ok === false) {
+								alerter("Fout bij aanpassen: " + responseData.message);
+							} else {
+								getApiBezoekers();
+							}
+						})
+						.catch(function (error) {
+							alertEl.innerHTML = "Fout bij aanpassen concert: " + error;
+						});
+				}
 	// EventListeners
 	document.getElementById("btnLaadBezoeker").addEventListener("click", function(){
 		getApiBezoekers();
 	});
-
+	document.getElementById("btnAddVisitor").addEventListener("click", function(e){
+		postApiBezoekers();
+	});
+	document.getElementById("btnVerwijderBezoeker").addEventListener("click", function(e){
+		deleteApiBezoekers();
+	});
+	document.getElementById("btnAanpassenBezoeker").addEventListener("click", function(e){
+		e.preventDefault();
+		putApiBezoekers();
+	});
 	// helper functies
 	function alerter(message) {
 		alertEl.innerHTML = message;

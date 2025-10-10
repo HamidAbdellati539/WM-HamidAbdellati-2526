@@ -56,6 +56,11 @@
 					      <span>${list[i].uur}</span>
 					      <span>${list[i].venue}</span>
 					      <span>${list[i].kostprijs}</span>
+						  <span>
+								<a href="concert-detail.html?id=${list[i].id}">
+								<button>Details</button>
+								</a>
+							</span>
 					    </div>`;
 					}
 					tLijst += "<br>";
@@ -96,8 +101,8 @@
 			fetch(url, opties)
 				.then(response => response.json())
 				.then(responseData => {
-					if (responseData.ok === false || responseData.status === 400) {
-						alerter("Fout: " + responseData.message + "<br>Ontbrekende velden: ");
+					if (responseData.ok === false) {
+						alerter("Fout: " + responseData.message);
 					} else {
 						console.log("Concert toegevoegd:", responseData);
 						getApiConcerten();
@@ -127,8 +132,7 @@
 						if (responseData.ok === false || responseData.status === 400) {
 							alerter("Fout bij verwijderen: " + responseData.message);
 						} else {
-							alerter("Concert succesvol verwijderd!");
-							getApiConcerten(); // Herlaad de lijst
+							getApiConcerten();
 						}
 					})
 					.catch(function (error) {
@@ -170,10 +174,9 @@
 					fetch(url, opties)
 						.then(response => response.json())
 						.then(responseData => {
-							if (responseData.ok === false || responseData.status === 400) {
+							if (responseData.ok === false) {
 								alerter("Fout bij aanpassen: " + responseData.message);
 							} else {
-								alerter("Concert succesvol aangepast!");
 								getApiConcerten();
 							}
 						})
@@ -187,11 +190,9 @@
 		getApiConcerten();
 	});
 	document.getElementById("btnNieuwConcert").addEventListener("click", function(e){
-		e.preventDefault();
 		postApiConcerten();
 	});
 		document.getElementById("btnVerwijderConcert").addEventListener("click", function(e){
-		e.preventDefault();
 		deleteApiConcerten();
 	});
 		document.getElementById("btnAanpassenConcert").addEventListener("click", function(e){
