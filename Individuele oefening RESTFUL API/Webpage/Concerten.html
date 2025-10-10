@@ -23,11 +23,71 @@
     <section id="concertenSectie">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Concerten</h2>
-        <button class="btn btn-primary" id="btnLaadConcert">Laad Concerten</button>
       </div>
+      <button class="btn btn-primary" id="btnLaadConcert">Laad Concerten</button>
       <div id="concertenLijst" class="row g-3">
         <!-- Hier komen concertkaarten via JS --> 
       </div>
+      <h2>Concert toevoegen</h2>
+      <form id="addConcertForm" class="border p-3 rounded bg-white">
+        <div class="mb-3">
+          <label for="Concert_artiest" class="form-label">Artiest</label>
+          <input type="text" id="Concert_artiest" class="form-control" name="Concert_artiest" required>
+        </div>
+        <div class="mb-3">
+          <label for="Concert_datum" class="form-label">Concert Datum</label>
+          <input type="date" id="Concert_datum" class="form-control" name="Concert_datum" required>
+        </div>
+        <div class="mb-3">
+          <label for="Concert_uur" class="form-label">Concert Uur</label>
+          <input type="time" id="Concert_uur" class="form-control" name="Concert_uur" required>
+        </div>
+        <div class="mb-3">
+          <label for="Concert_venue" class="form-label">Concert Venue</label>
+          <input type="text" id="Concert_venue" class="form-control" name="Concert_venue" required>
+        </div>
+        <div class="mb-3">
+          <label for="Concert_kostprijs" class="form-label">Concert Kostprijs</label>
+          <input type="number" id="Concert_kostprijs" class="form-control" name="Concert_kostprijs" required>
+        </div>
+        <button type="submit" id="btnNieuwConcert" class="btn btn-success">Nieuw Concert</button>
+      </form>
+      <h2>Concert verwijderen</h2>
+      <form id="deleteConcertForm" class="border p-3 rounded bg-white">
+        <div class="mb-3">
+          <label for="concert_id" class="form-label">Concert ID</label>
+          <input type="number" id="concert_id" class="form-control" name="concert_id" required>
+        </div>
+        <button type="submit" id="btnVerwijderConcert" class="btn btn-success">Verwijder Concert</button>
+      </form>
+      <h2>Concert aanpassen</h2>
+      <form id="putConcertForm" class="border p-3 rounded bg-white">
+        <div class="mb-3">
+          <label for="concert_id" class="form-label">Concert ID</label>
+          <input type="number" id="concert_id" class="form-control" name="concert_id" required>
+        </div>
+        <div class="mb-3">
+          <label for="concert_artiest" class="form-label">Concert Artiest</label>
+          <input type="text" id="concert_artiest" class="form-control" name="concert_artiest" required>
+        </div>
+        <div class="mb-3">
+          <label for="concert_datum" class="form-label">Concert Datum</label>
+          <input type="date" id="concert_datum" class="form-control" name="concert_datum" required>
+        </div>
+        <div class="mb-3">
+          <label for="concert_uur" class="form-label">Concert Uur</label>
+          <input type="time" id="concert_uur" class="form-control" name="concert_uur" required>
+        </div>
+        <div class="mb-3">
+          <label for="concert_venue" class="form-label">Concert Venue</label>
+          <input type="text" id="concert_venue" class="form-control" name="concert_venue" required>
+        </div>
+        <div class="mb-3">
+          <label for="concert_kostprijs" class="form-label">Concert Kostprijs</label>
+          <input type="number" id="concert_kostprijs" class="form-control" name="concert_kostprijs" required>
+        </div>
+        <button type="submit" id="btnAanpassenConcert" class="btn btn-success">Pas Concert Aan</button>
+      </form>
     </section>
 <script src="js/Concerten.js"></script>
 </body>

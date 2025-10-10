@@ -70,11 +70,133 @@
 				// verwerk de fout
 				alertEl.innerHTML = "fout : " + error;
 			});
-	}
+		}
+		function postApiConcerten() {
+			let form = document.getElementById("addConcertForm");
+		
+			let concertData = {
+				artiest: form.elements["Concert_artiest"].value,
+				datum: form.elements["Concert_datum"].value,
+				uur: form.elements["Concert_uur"].value,
+				venue: form.elements["Concert_venue"].value,
+				kostprijs: form.elements["Concert_kostprijs"].value
+			};
+		
+			let url = baseApiAddress + "concerten.php";
+		
+			let opties = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Accept": "application/json"
+				},
+				body: JSON.stringify(concertData)
+			};
+		
+			fetch(url, opties)
+				.then(response => response.json())
+				.then(responseData => {
+					if (responseData.ok === false || responseData.status === 400) {
+						alerter("Fout: " + responseData.message + "<br>Ontbrekende velden: ");
+					} else {
+						console.log("Concert toegevoegd:", responseData);
+						getApiConcerten();
+					}
+				})
+				.catch(function (error) {
+					alertEl.innerHTML = "Fout bij toevoegen concert: " + error;
+				});
+		}
+			function deleteApiConcerten(concertId) {
 
+				concertId = document.getElementById("concert_id").value;
+				let url = baseApiAddress + "concerten.php";
+
+				let opties = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						"Accept": "application/json"
+					},
+					body: JSON.stringify({ id: concertId })
+				};
+			
+				fetch(url, opties)
+					.then(response => response.json())
+					.then(responseData => {
+						if (responseData.ok === false || responseData.status === 400) {
+							alerter("Fout bij verwijderen: " + responseData.message);
+						} else {
+							alerter("Concert succesvol verwijderd!");
+							getApiConcerten(); // Herlaad de lijst
+						}
+					})
+					.catch(function (error) {
+						alertEl.innerHTML = "Fout bij verwijderen concert: " + error;
+					});
+				
+		}
+				function putApiConcerten() {
+					let form = document.getElementById("putConcertForm");
+				
+					concert_id = document.getElementById("concert_id").value;
+					concert_artiest = document.getElementById("concert_artiest").value;
+					concert_datum = document.getElementById("concert_datum").value;
+					concert_uur = document.getElementById("concert_uur").value;
+					concert_venue = document.getElementById("concert_venue").value;
+					concert_kostprijs = document.getElementById("concert_kostprijs").value;
+
+
+						let concertData = {
+						id: concert_id,
+						artiest: concert_artiest,
+						datum: concert_datum,
+						uur: concert_uur,
+						venue: concert_venue,
+						kostprijs: concert_kostprijs
+					};
+				
+					let url = baseApiAddress + "concerten.php";
+				
+					let opties = {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							"Accept": "application/json"
+						},
+						body: JSON.stringify(concertData)
+					};
+				
+					fetch(url, opties)
+						.then(response => response.json())
+						.then(responseData => {
+							if (responseData.ok === false || responseData.status === 400) {
+								alerter("Fout bij aanpassen: " + responseData.message);
+							} else {
+								alerter("Concert succesvol aangepast!");
+								getApiConcerten();
+							}
+						})
+						.catch(function (error) {
+							alertEl.innerHTML = "Fout bij aanpassen concert: " + error;
+						});
+				}
+	
 	// EventListeners
 	document.getElementById("btnLaadConcert").addEventListener("click", function(){
 		getApiConcerten();
+	});
+	document.getElementById("btnNieuwConcert").addEventListener("click", function(e){
+		e.preventDefault();
+		postApiConcerten();
+	});
+		document.getElementById("btnVerwijderConcert").addEventListener("click", function(e){
+		e.preventDefault();
+		deleteApiConcerten();
+	});
+		document.getElementById("btnAanpassenConcert").addEventListener("click", function(e){
+		e.preventDefault();
+		putApiConcerten();
 	});
 
 	// helper functies
