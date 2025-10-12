@@ -20,4 +20,6 @@ ENDPOINTS:
         https://hamidabdellati-odisee.be/wm/Individuele oefening RESTFUL API/API/tickets.php
         https://hamidabdellati-odisee.be/wm/Individuele oefening RESTFUL API/API/bezoekers.php
         https://hamidabdellati-odisee.be/wm/Individuele oefening RESTFUL API/API/concerten.php
+WebPage Combell URL:
+        https://hamidabdellati-odisee.be/wm/Individuele%20oefening%20RESTFUL%20API/Webpage/Concerten.html
 # Totale duur : 13u 
