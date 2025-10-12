@@ -22,6 +22,7 @@ function haalConcertDetailOp(id) {
 			}
 
 			const concert = data.data[0];
+			const bezoeker = data.data[0];
 			console.log("Concert object:", concert);
 
 			let html = `
@@ -32,6 +33,7 @@ function haalConcertDetailOp(id) {
 				<p><strong>Uur:</strong> ${concert.uur}</p>
 				<p><strong>Venue:</strong> ${concert.venue}</p>
 				<p><strong>Kostprijs:</strong> €${concert.kostprijs}</p>
+				<p><strong>Bezoeker:</strong> ${bezoeker.voornaam}, ${bezoeker.familienaam}</p>
 				<br>
 				<a href="Concerten.html"><button>Terug naar overzicht</button></a>
 			`;

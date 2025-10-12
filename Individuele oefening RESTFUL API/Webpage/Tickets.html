@@ -24,19 +24,47 @@
             </div>
         </div>
     </nav>
-    <section id="ticketsSectie" style="display:blo;">
+    <section id="ticketsSectie" style="display:block">
       <h2>Ticket kopen</h2>
-      <form id="ticketForm" class="border p-3 rounded bg-white">
+        <button class="btn btn-primary" id="btnLaadTickets">Laad Tickets</button>
+      <div id="ticketsLijst" class="row g-3">
+        <!-- Hier komen concertkaarten via JS --> 
+      </div>
+      <h2>Ticket Toevoegen</h2>
+      <form id="addTicketForm" class="border p-3 rounded bg-white">
         <div class="mb-3">
-          <label for="bezoeker_id" class="form-label">Bezoeker ID</label>
-          <input type="number" class="form-control" name="bezoeker_id" required>
+          <label for="Ticket_bezoekerID" class="form-label">Bezoeker ID</label>
+          <input type="number" id="Ticket_bezoekerID" class="form-control" name="Ticket_bezoekerID" required>
         </div>
         <div class="mb-3">
-          <label for="concert_id" class="form-label">Concert ID</label>
-          <input type="number" class="form-control" name="concert_id" required>
+          <label for="Ticket_concertID" class="form-label">Concert ID</label>
+          <input type="number" id="Ticket_concertID" class="form-control" name="Ticket_concertID" required>
         </div>
-        <button type="submit" class="btn btn-success">Ticket kopen</button>
-        <button type="button" class="btn btn-secondary" id="btnAnnuleerTicket">Annuleren</button>
+        <button type="submit" id="btnAddTicket" class="btn btn-success">Voeg Ticket Toe</button>
+      </form>
+      <h2>Ticket Verwijderen</h2>
+      <form id="deleteTicketForm" class="border p-3 rounded bg-white">
+          <div class="mb-3">
+          <label for="Ticket_ID" class="form-label">Ticket ID</label>
+          <input type="number" id="Ticket_ID" class="form-control" name="Ticket_ID" required>
+          <button type="submit" id="btnDeleteTicket" class="btn btn-success">Verwijder Ticket</button>
+        </div>
+      </form>
+      <h2>Ticket Aanpassen</h2>
+      <form id="putTicketForm" class="border p-3 rounded bg-white">
+          <div class="mb-3">
+          <label for="Ticket_ID" class="form-label">Ticket ID</label>
+          <input type="number" id="Ticket_ID" class="form-control" name="Ticket_ID" required>
+        </div>
+          <div class="mb-3">
+          <label for="Ticket_bezoekerID" class="form-label">Bezoeker ID</label>
+          <input type="number" id="Ticket_bezoekerID" class="form-control" name="Ticket_bezoekerID" required>
+        </div>
+          <div class="mb-3">
+          <label for="Ticket_concertID" class="form-label">Concert ID</label>
+          <input type="number" id="Ticket_concertID" class="form-control" name="Ticket_concertID" required>
+        </div>
+        <button type="submit" id="btnPutTicket" class="btn btn-success">Pas Ticket Aan</button>
       </form>
     </section>
     <script src="js/Tickets.js"></script>

@@ -43,7 +43,8 @@
 					// er zit minstens 1 item in list, we geven dit ook onmiddelijk weer
 					var tLijst = `
 					  <div class="rij kOdd">
-					    <span>ID</span><span>voornaam</span><span>familienaam</span><span>geboortedatum</span><span>email</span>
+					    <span>ID</span><span>Voornaam</span><span>Familienaam</span>
+					    <span>Geboortedatum</span><span>Email</span>
 					  </div>
 					  `;
 					for (var i = 0; i < list.length; i++) {
@@ -54,6 +55,11 @@
 					      <span>${list[i].familienaam}</span>
 					      <span>${list[i].geboortedatum}</span>
 					      <span>${list[i].email}</span>
+						  <span>
+								<a href="bezoeker-detail.html?id=${list[i].id}">
+								<button>Details</button>
+								</a>
+							</span>
 					    </div>`;
 					}
 					tLijst += "<br>";
@@ -68,11 +74,11 @@
 				// verwerk de fout
 				alertEl.innerHTML = "fout : " + error;
 			});
-	}
+		}
 		function postApiBezoekers() {
 			let form = document.getElementById("addVisitorForm");
 		
-			let concertData = {
+			let bezoekerData = {
 				voornaam: form.elements["bezoeker_voornaam"].value,
 				familienaam: form.elements["bezoeker_familienaam"].value,
 				geboortedatum: form.elements["Bezoeker_geboortedatum"].value,
@@ -87,7 +93,7 @@
 					"Content-Type": "application/json",
 					"Accept": "application/json"
 				},
-				body: JSON.stringify(concertData)
+				body: JSON.stringify(bezoekerData)
 			};
 		
 			fetch(url, opties)
@@ -139,7 +145,7 @@
 					let Bezoeker_geboortedatum = document.getElementById("Bezoeker_geboortedatum").value;
 					let Bezoeker_Email = document.getElementById("bezoeker_email").value;
 
-						let concertData = {
+						let bezoekerData = {
 						id: bezoeker_id,
 						voornaam: bezoeker_voornaam,
 						familienaam: bezoeker_familienaam,
@@ -155,7 +161,7 @@
 							"Content-Type": "application/json",
 							"Accept": "application/json"
 						},
-						body: JSON.stringify(concertData)
+						body: JSON.stringify(bezoekerData)
 					};
 				
 					fetch(url, opties)
