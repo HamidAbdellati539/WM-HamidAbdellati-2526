@@ -1,7 +1,18 @@
 <?php
 // --- "GET" alle tickets  
 
-$sql="select id, bezoeker_id, concert_id, aankoop_datum FROM tickets";
+$sql = "
+SELECT 
+  t.id,
+  t.bezoeker_id,
+  t.concert_id,
+  t.aankoop_datum,
+  CONCAT(b.voornaam, ' ', b.familienaam) AS bezoeker_naam,
+  c.artiest AS concert_artiest
+FROM tickets t
+JOIN bezoekers b ON t.bezoeker_id = b.id
+JOIN concerten c ON t.concert_id = c.id
+";
 
 // geen prepared statement nodig, aangezien we geen parameters
 // van de gebruiker verwerken.

@@ -22,6 +22,25 @@ ENDPOINTS:
         https://hamidabdellati-odisee.be/wm/Individuele oefening RESTFUL API/API/concerten.php
 WebPage Combell URL:
         https://hamidabdellati-odisee.be/wm/Individuele%20oefening%20RESTFUL%20API/Webpage/Concerten.html
-## Week 3 - 1.5u
+## Week 4 - 1.5u
 * les - Oefeningen verder uitgewerken met eigen API
-# Totale duur : 14.5u 
+## Week 5 - 0.0u
+* Vrijdag - 3u
+    * Opzet project, Tabs + Navigatie
+* Zaterdag - 1.5u
+    * Ionrefresher -> Elke Tab
+* Zondag - 4u
+    * GET Bezoekers, Concerten + Tickets
+* Maandag - 5u
+    * POST Concerten + Bezoekers
+    * DELETE Concerten + Bezoekers
+    * PUT Concerten + Bezoekers
+* Dinsdag - 2.5u
+    * POST Tickets
+    * Formvalidatie Concerten, Bezoekers + Tickets
+    * About Page
+* Woensdag - 1.5u
+    * Debug APK + Readme.md
+* Donderdag - 0.5u
+    * Video Demo
+# Totale duur : 32.5u
