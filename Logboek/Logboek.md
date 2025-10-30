@@ -24,7 +24,7 @@ WebPage Combell URL:
         https://hamidabdellati-odisee.be/wm/Individuele%20oefening%20RESTFUL%20API/Webpage/Concerten.html
 ## Week 4 - 1.5u
 * les - Oefeningen verder uitgewerken met eigen API
-## Week 5 - 0.0u
+## Week 5 - 18u
 * Vrijdag - 3u
     * Opzet project, Tabs + Navigatie
 * Zaterdag - 1.5u
